@@ -9,8 +9,7 @@ module.exports = {
       filename: 'bundle.js',
       path: path.join(__dirname,'/disk'),
       publicPath: '/'
-    },
-
+    }
     module: {
       rules: [
         {
@@ -22,9 +21,22 @@ module.exports = {
               presets: ['es2015','react']
             }
           }
+        },{
+          test: /\.css$/,
+          loader: 'style-loader!css-loader'
+        },{
+          test: /\.less$/,
+          use: [
+            {
+               loader: "style-loader"
+            },{
+               loader: "css-loader"
+            },{
+              loader: "less-loader" 
+            }
+          ]
         }
       ]
-
     }
 
 }
