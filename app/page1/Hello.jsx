@@ -1,4 +1,5 @@
 import React from 'react'
+import './Hello.less';
 
 export default class Hello extends React.Component {
 
@@ -6,6 +7,7 @@ export default class Hello extends React.Component {
     return (
       <div>
         hello dd
+        <div className="container">11</div>
       </div>
     )
     }

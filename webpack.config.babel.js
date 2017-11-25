@@ -9,7 +9,7 @@ module.exports = {
       filename: 'bundle.js',
       path: path.join(__dirname,'/disk'),
       publicPath: '/'
-    }
+    },
     module: {
       rules: [
         {
@@ -23,16 +23,24 @@ module.exports = {
           }
         },{
           test: /\.css$/,
-          loader: 'style-loader!css-loader'
+          exclude: /node_modules/,
+          use: [
+            {
+               loader: "style-loader"
+            },{
+               loader: "css-loader"
+            }
+          ]
         },{
           test: /\.less$/,
+          exclude: /node_modules/,
           use: [
             {
                loader: "style-loader"
             },{
                loader: "css-loader"
             },{
-              loader: "less-loader" 
+              loader: "less-loader"
             }
           ]
         }
