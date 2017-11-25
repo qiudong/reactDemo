@@ -1,12 +1,11 @@
 import React from 'react'
 
-export defalut class Hello extends React.Component {
+export default class Hello extends React.Component {
 
-
-    render (){
+    render(){
     return (
       <div>
-        hello 
+        hello
       </div>
     )
     }
