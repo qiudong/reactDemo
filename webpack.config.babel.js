@@ -13,12 +13,30 @@ module.exports = {
     module: {
       rules: [
         {
+          exclude: [
+             /\.html$/,
+             /\.(js|jsx)$/,
+             /\.css$/,
+             /\.json$/,
+             /\.bmp$/,
+             /\.gif$/,
+             /\.jpe?g$/,
+             /\.png$/,
+             /\.less$/,   //新增项
+             /\.svg$/,    //新增项
+           ],
+        },
+
+        {
           test: /\.(js|jsx)?$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['es2015','react']
+              presets: ['es2015','react'],
+              plugins: [
+        ['import', { libraryName: 'antd', style: true }],
+      ],
             }
           }
         },{
@@ -41,22 +59,26 @@ module.exports = {
           ]
         },{
           test: /\.less$/,
-          exclude: /node_modules/,
           use: [
+            require.resolve('style-loader'),
+      require.resolve('css-loader'),
+
             {
-               loader: "style-loader"
-            },{
-               loader: "css-loader"
-            },{
-              loader: "less-loader"
-            },{
-                loader: 'postcss-loader',
-                options: {
-                  config: {
-                    path: './postcss.config.js'
-                  },
-                }
-              }
+        loader: require.resolve('less-loader'),
+        options: {
+          modifyVars: { "@primary-color": "#1DA57A" },
+        },
+      },
+
+            // {
+            //     loader: 'postcss-loader',
+            //     options: {
+            //       config: {
+            //         path: './postcss.config.js'
+            //       },
+            //
+            //     }
+            //   }
           ]
         }
       ]
