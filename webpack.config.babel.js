@@ -29,7 +29,15 @@ module.exports = {
                loader: "style-loader"
             },{
                loader: "css-loader"
-            }
+            },{
+                loader: 'postcss-loader',
+                options: {
+                  config: {
+                    path: './postcss.config.js'
+                  },
+                }
+              }
+
           ]
         },{
           test: /\.less$/,
@@ -41,10 +49,21 @@ module.exports = {
                loader: "css-loader"
             },{
               loader: "less-loader"
-            }
+            },{
+                loader: 'postcss-loader',
+                options: {
+                  config: {
+                    path: './postcss.config.js'
+                  },
+                }
+              }
           ]
         }
       ]
-    }
+    },
 
+    devtool: 'source-map',
+    devServer: {
+
+    }
 }
